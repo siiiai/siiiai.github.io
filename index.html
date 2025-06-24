@@ -12,22 +12,22 @@
         /* Custom styles for background, font, and animations */
         body {
             font-family: 'Inter', sans-serif;
-            /* Radial gradient for a deep, space-like background */
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            /* Changed to an even lighter radial gradient background */
+            background: radial-gradient(circle at center, #ffffff 0%, #f0f0f0 100%);
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            color: #ffffff;
+            color: #333333; /* Darker text for light background */
             overflow: hidden; /* Prevent scrollbars from background animations */
         }
 
         /* Keyframe animation for the glowing text effect (simplified) */
         @keyframes pulseGlow {
-            0% { text-shadow: 0 0 4px rgba(255,255,255,0.15), 0 0 8px rgba(255,255,255,0.08); }
-            50% { text-shadow: 0 0 10px rgba(255,255,255,0.4), 0 0 18px rgba(255,255,255,0.2); }
-            100% { text-shadow: 0 0 4px rgba(255,255,255,0.15), 0 0 8px rgba(255,255,255,0.08); }
+            0% { text-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.05); }
+            50% { text-shadow: 0 0 10px rgba(0,0,0,0.2), 0 0 18px rgba(0,0,0,0.1); }
+            100% { text-shadow: 0 0 4px rgba(0,0,0,0.1), 0 0 8px rgba(0,0,0,0.05); }
         }
 
         /* Apply the glowing text animation */
@@ -62,7 +62,7 @@
         /* Styling for individual particle elements */
         .particle {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+            background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black for light background */
             border-radius: 50%; /* Make them circles */
             pointer-events: none; /* Do not interfere with mouse events */
             animation: floatAndFade 10s infinite linear; /* Apply float and fade animation, linear for simplicity */
@@ -83,12 +83,12 @@
 
     <!-- Header Section -->
     <header class="absolute top-0 left-0 w-full p-4 md:p-8 flex justify-between items-center z-20 animate-fade-in animate-fade-in-0">
-        <div class="text-xl md:text-2xl font-bold text-white">SIII.ai</div>
+        <div class="text-xl md:text-2xl font-bold text-gray-900">SIII.ai</div>
         <nav>
             <ul class="flex space-x-4 md:space-x-8">
-                <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Research</a></li>
-                <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">Blog</a></li>
-                <li><a href="#" class="text-gray-300 hover:text-white transition duration-300">About</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-gray-900 transition duration-300">Research</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-gray-900 transition duration-300">Blog</a></li>
+                <li><a href="#" class="text-gray-700 hover:text-gray-900 transition duration-300">About</a></li>
             </ul>
         </nav>
     </header>
@@ -105,20 +105,20 @@
 
 
     <!-- Main Content Block -->
-    <div class="relative text-white p-10 md:p-16 lg:p-20 rounded-3xl shadow-2xl text-center max-w-xl mx-4
+    <div class="relative p-10 md:p-16 lg:p-20 rounded-3xl shadow-2xl text-center max-w-xl mx-4
                  transform hover:scale-105 transition duration-500 ease-in-out
-                 /* Changed from translucent gradient to solid dark background */
-                 bg-gray-900/70 /* Slightly transparent dark gray for a subtle effect, you can change to bg-gray-900 for full opacity */
-                 /* Subtle white border for definition */
-                 border border-white/10
+                 /* Changed background to be visible on light theme, and text to dark */
+                 bg-white/80 text-gray-900
+                 /* Subtle border for definition */
+                 border border-gray-300
                  overflow-hidden">
         
-        <!-- Main Heading with glowing effect -->
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight glow-text relative z-10 animate-fade-in animate-fade-in-1">
-            Infinite Intelligence
+        <!-- Main Heading with glowing effect - text changed and font size adjusted -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight glow-text relative z-10 animate-fade-in animate-fade-in-1">
+            Infinite Intelligence for Humanity
         </h1>
         <!-- Subtitle for more context, fades in with a delay -->
-        <p class="mt-4 text-lg md:text-xl text-gray-300 relative z-10 animate-fade-in animate-fade-in-2">
+        <p class="mt-4 text-lg md:text-xl text-gray-700 relative z-10 animate-fade-in animate-fade-in-2">
             Superintelligence Institue of Innovation
         </p>
 
@@ -131,7 +131,7 @@
     </div>
     
     <!-- Footer Section -->
-    <footer class="absolute bottom-0 left-0 w-full p-4 text-center text-gray-500 text-sm z-20 animate-fade-in animate-fade-in-4">
+    <footer class="absolute bottom-0 left-0 w-full p-4 text-center text-gray-700 text-sm z-20 animate-fade-in animate-fade-in-4">
         &copy; 2025.
     </footer>
     
