@@ -23,27 +23,16 @@
             overflow: hidden; /* Prevent scrollbars from background animations */
         }
 
-        /* Keyframe animation for the glowing text effect */
+        /* Keyframe animation for the glowing text effect (simplified) */
         @keyframes pulseGlow {
-            0% { text-shadow: 0 0 5px rgba(255,255,255,0.2), 0 0 10px rgba(255,255,255,0.1); }
-            50% { text-shadow: 0 0 15px rgba(255,255,255,0.6), 0 0 25px rgba(255,255,255,0.4); }
-            100% { text-shadow: 0 0 5px rgba(255,255,255,0.2), 0 0 10px rgba(255,255,255,0.1); }
+            0% { text-shadow: 0 0 4px rgba(255,255,255,0.15), 0 0 8px rgba(255,255,255,0.08); }
+            50% { text-shadow: 0 0 10px rgba(255,255,255,0.4), 0 0 18px rgba(255,255,255,0.2); }
+            100% { text-shadow: 0 0 4px rgba(255,255,255,0.15), 0 0 8px rgba(255,255,255,0.08); }
         }
 
         /* Apply the glowing text animation */
         .glow-text {
             animation: pulseGlow 3s infinite alternate ease-in-out;
-        }
-
-        /* Keyframe animation for subtle pulsing overlay */
-        @keyframes pulse-slow {
-            0%, 100% { opacity: 0.05; }
-            50% { opacity: 0.15; }
-        }
-
-        /* Apply the slow pulse animation */
-        .animate-pulse-slow {
-            animation: pulse-slow 4s ease-in-out infinite;
         }
 
         /* Keyframe animation for fading in elements */
@@ -55,17 +44,19 @@
         /* Apply the fade-in animation with delays */
         .animate-fade-in {
             animation: fade-in 1s ease-out forwards;
+            opacity: 0; /* Ensure elements are hidden before animation starts */
         }
         .animate-fade-in-1 { animation-delay: 0.5s; }
         .animate-fade-in-2 { animation-delay: 1s; }
         .animate-fade-in-3 { animation-delay: 1.5s; }
+        .animate-fade-in-4 { animation-delay: 2s; } /* Added for footer */
 
-        /* Particle background animation */
+
+        /* Particle background animation (simplified) */
         @keyframes floatAndFade {
-            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
-            20% { opacity: 0.1; } /* More subtle initial opacity for particles */
-            80% { opacity: 0.1; }
-            100% { transform: translateY(-100vh) translateX(50px) scale(0.5); opacity: 0; }
+            0% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 0.1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
         }
 
         /* Styling for individual particle elements */
@@ -74,29 +65,24 @@
             background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
             border-radius: 50%; /* Make them circles */
             pointer-events: none; /* Do not interfere with mouse events */
-            animation: floatAndFade 15s infinite ease-in-out; /* Apply float and fade animation */
+            animation: floatAndFade 10s infinite linear; /* Apply float and fade animation, linear for simplicity */
         }
 
         /* Define unique sizes, positions, and delays for each particle for variety */
         .particle:nth-child(1) { width: 3px; height: 3px; top: 10%; left: 20%; animation-delay: 0s; }
-        .particle:nth-child(2) { width: 5px; height: 5px; top: 30%; left: 80%; animation-delay: 2s; }
-        .particle:nth-child(3) { width: 4px; height: 4px; top: 60%; left: 40%; animation-delay: 4s; }
-        .particle:nth-child(4) { width: 6px; height: 6px; top: 80%; left: 10%; animation-delay: 6s; }
-        .particle:nth-child(5) { width: 2px; height: 2px; top: 40%; left: 60%; animation-delay: 8s; }
-        .particle:nth-child(6) { width: 4px; height: 4px; top: 20%; left: 70%; animation-delay: 10s; }
-        .particle:nth-child(7) { width: 3px; height: 3px; top: 50%; left: 30%; animation-delay: 12s; }
-        .particle:nth-child(8) { width: 5px; height: 5px; top: 70%; left: 90%; animation-delay: 14s; }
-        .particle:nth-child(9) { width: 3px; height: 3px; top: 25%; left: 5%; animation-delay: 1s; }
-        .particle:nth-child(10) { width: 4px; height: 4px; top: 55%; left: 95%; animation-delay: 3s; }
-        .particle:nth-child(11) { width: 2px; height: 2px; top: 85%; left: 50%; animation-delay: 5s; }
-        .particle:nth-child(12) { width: 5px; height: 5px; top: 15%; left: 45%; animation-delay: 7s; }
-
+        .particle:nth-child(2) { width: 5px; height: 5px; top: 30%; left: 80%; animation-delay: 1.5s; }
+        .particle:nth-child(3) { width: 4px; height: 4px; top: 60%; left: 40%; animation-delay: 3s; }
+        .particle:nth-child(4) { width: 6px; height: 6px; top: 80%; left: 10%; animation-delay: 4.5s; }
+        .particle:nth-child(5) { width: 2px; height: 2px; top: 40%; left: 60%; animation-delay: 6s; }
+        .particle:nth-child(6) { width: 4px; height: 4px; top: 20%; left: 70%; animation-delay: 7.5s; }
+        .particle:nth-child(7) { width: 3px; height: 3px; top: 50%; left: 30%; animation-delay: 9s; }
+        .particle:nth-child(8) { width: 5px; height: 5px; top: 70%; left: 90%; animation-delay: 10.5s; }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Header Section -->
-    <header class="absolute top-0 left-0 w-full p-4 md:p-8 flex justify-between items-center z-20">
+    <header class="absolute top-0 left-0 w-full p-4 md:p-8 flex justify-between items-center z-20 animate-fade-in animate-fade-in-0">
         <div class="text-xl md:text-2xl font-bold text-white">SIII.ai</div>
         <nav>
             <ul class="flex space-x-4 md:space-x-8">
@@ -116,26 +102,17 @@
     <div class="particle"></div>
     <div class="particle"></div>
     <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
 
 
     <!-- Main Content Block -->
     <div class="relative text-white p-10 md:p-16 lg:p-20 rounded-3xl shadow-2xl text-center max-w-xl mx-4
-                transform hover:scale-105 transition duration-500 ease-in-out
-                /* Translucent gradient background for the card */
-                bg-gradient-to-br from-purple-800/20 via-blue-800/20 to-indigo-900/20
-                /* Backdrop blur for a modern glass effect */
-                backdrop-blur-md
-                /* Subtle white border for definition */
-                border border-white/10
-                overflow-hidden">
+                 transform hover:scale-105 transition duration-500 ease-in-out
+                 /* Changed from translucent gradient to solid dark background */
+                 bg-gray-900/70 /* Slightly transparent dark gray for a subtle effect, you can change to bg-gray-900 for full opacity */
+                 /* Subtle white border for definition */
+                 border border-white/10
+                 overflow-hidden">
         
-        <!-- Subtle overlay for shimmer effect inside the card -->
-        <div class="absolute inset-0 bg-white opacity-5 rounded-3xl animate-pulse-slow"></div>
-
         <!-- Main Heading with glowing effect -->
         <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight glow-text relative z-10 animate-fade-in animate-fade-in-1">
             Infinite Intelligence
@@ -147,14 +124,14 @@
 
         <!-- Call-to-Action button with gradient and hover effects, fades in with a delay -->
         <a href="#" class="mt-8 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full
-                          shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out relative z-10
-                          animate-fade-in animate-fade-in-3">
+                           shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out relative z-10
+                           animate-fade-in animate-fade-in-3">
             Exploring SIII.ai
         </a>
     </div>
     
     <!-- Footer Section -->
-    <footer class="absolute bottom-0 left-0 w-full p-4 text-center text-gray-500 text-sm z-20 animate-fade-in animate-fade-in-5">
+    <footer class="absolute bottom-0 left-0 w-full p-4 text-center text-gray-500 text-sm z-20 animate-fade-in animate-fade-in-4">
         &copy; 2025.
     </footer>
     
