@@ -77,6 +77,69 @@
         .particle:nth-child(6) { width: 4px; height: 4px; top: 20%; left: 70%; animation-delay: 7.5s; }
         .particle:nth-child(7) { width: 3px; height: 3px; top: 50%; left: 30%; animation-delay: 9s; }
         .particle:nth-child(8) { width: 5px; height: 5px; top: 70%; left: 90%; animation-delay: 10.5s; }
+
+        /* Carousel specific styles for fade transition */
+        #carousel-slides {
+            /* No longer a flex container that translates, now a relative container for absolute children */
+            display: block; /* Changes from flex to block as children will be absolutely positioned */
+            position: relative; /* Essential for absolute positioning of slides inside */
+            height: 400px; /* Define a fixed height for the carousel container to prevent collapse */
+            /* Ensure the shadow and border are still on the outer container */
+            border-radius: 1.5rem; /* rounded-3xl */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-2xl */
+            border: 1px solid #d1d5db; /* border border-gray-300 */
+        }
+
+        /* Styles for individual carousel slides */
+        #carousel-slides > div {
+            position: absolute; /* Stack slides on top of each other */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%; /* Take full height of the parent carousel-slides */
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.5s ease-in-out; /* Smooth fade transition */
+            display: flex; /* Use flex to center content within each slide */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem 4rem 5rem 4rem; /* Adjusted padding-bottom to make space for bottom arrows */
+            box-sizing: border-box; /* Include padding in element's total width and height */
+        }
+
+        /* Active slide style */
+        #carousel-slides > div.slide-active {
+            opacity: 1; /* Make active slide visible */
+            z-index: 1; /* Ensure active slide is on top */
+        }
+
+        /* Styles for the individual arrow buttons */
+        .arrow-btn {
+            background-color: transparent; /* Transparent to show panel background */
+            border: none;
+            color: #4a5568; /* Changed arrow color to dark gray (gray-700) */
+            padding: 0.5rem 0.75rem; /* Reduced padding for smaller buttons */
+            font-size: 1.2rem; /* Reduced font size for smaller buttons */
+            border-radius: 9999px; /* Full rounded */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .arrow-btn:hover {
+            background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover for contrast */
+            transform: scale(1.08); /* More pronounced hover effect */
+        }
+
+        .arrow-btn:focus {
+            outline: none; /* Removed default focus outline */
+            box-shadow: none; /* Removed custom focus box-shadow */
+        }
+
+        .arrow-btn:disabled {
+            opacity: 0.4; /* More transparent when disabled */
+            cursor: not-allowed;
+            background-color: transparent; /* Disabled button background also transparent */
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -103,31 +166,57 @@
     <div class="particle"></div>
     <div class="particle"></div>
 
+    <!-- Main Content Carousel Wrapper (centers the carousel and contains the carousel slides and new arrow container) -->
+    <div class="relative w-full max-w-xl mx-4">
+        <!-- Carousel Slides Container -->
+        <div id="carousel-slides" class="overflow-hidden">
+            <!-- Slide 1: Original Content Block -->
+            <div class="p-10 md:p-16 lg:p-20 text-center bg-white/80 text-gray-900">
+                <!-- Main Heading with glowing effect -->
+                <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight glow-text relative z-10 animate-fade-in animate-fade-in-1">
+                    Infinite Intelligence<br>for Humanity
+                </h1>
+                <!-- Subtitle for more context -->
+                <p class="mt-4 text-base md:text-lg text-gray-700 relative z-10 animate-fade-in animate-fade-in-2">
+                    The Age of Superintelligence
+                </p>
+                <!-- Call-to-Action button with gradient and hover effects -->
+                <a href="#" class="mt-8 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full
+                                    shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out relative z-10
+                                    animate-fade-in animate-fade-in-3">
+                    Exploring SIII.ai
+                </a>
+            </div>
 
-    <!-- Main Content Block -->
-    <div class="relative p-10 md:p-16 lg:p-20 rounded-3xl shadow-2xl text-center max-w-xl mx-4
-                 transform hover:scale-105 transition duration-500 ease-in-out
-                 /* Changed background to be visible on light theme, and text to dark */
-                 bg-white/80 text-gray-900
-                 /* Subtle border for definition */
-                 border border-gray-300
-                 overflow-hidden">
-        
-        <!-- Main Heading with glowing effect - text changed and font size adjusted -->
-        <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight glow-text relative z-10 animate-fade-in animate-fade-in-1">
-            Infinite Intelligence<br>for Humanity
-        </h1>
-        <!-- Subtitle for more context, fades in with a delay -->
-        <p class="mt-4 text-base md:text-lg text-gray-700 relative z-10 animate-fade-in animate-fade-in-2">
-            The Superintelligence Innovation Institute
-        </p>
+            <!-- Slide 2: Duplicated Content Block with slightly different text -->
+            <div class="p-10 md:p-16 lg:p-20 text-center bg-white/80 text-gray-900">
+                <!-- Main Heading with glowing effect -->
+                <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold leading-tight glow-text relative z-10 animate-fade-in animate-fade-in-1">
+                    A New Paradigm of AI 
+                </h1>
+                <!-- Subtitle for more context -->
+                <p class="mt-4 text-base md:text-lg text-gray-700 relative z-10 animate-fade-in animate-fade-in-2">
+                    The Superintelligence Innovation Institute
+                </p>
+                <!-- Call-to-Action button with gradient and hover effects -->
+                <a href="#" class="mt-8 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full
+                                    shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out relative z-10
+                                    animate-fade-in animate-fade-in-3">
+                    Exploring SIII.ai
+                </a>
+            </div>
+        </div>
 
-        <!-- Call-to-Action button with gradient and hover effects, fades in with a delay -->
-        <a href="#" class="mt-8 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full
-                           shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out relative z-10
-                           animate-fade-in animate-fade-in-3">
-            Exploring SIII.ai
-        </a>
+        <!-- Navigation Arrows Container - positioned OUTSIDE #carousel-slides but inside the wrapper -->
+        <div class="arrow-container absolute bottom-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-2
+                    bg-white bg-opacity-80 p-1 px-2 rounded-full shadow-md">
+            <button id="prevBtn" class="arrow-btn">
+                &lsaquo; <!-- Left arrow character -->
+            </button>
+            <button id="nextBtn" class="arrow-btn">
+                &rsaquo; <!-- Right arrow character -->
+            </button>
+        </div>
     </div>
     
     <!-- Footer Section -->
@@ -135,5 +224,74 @@
         &copy; 2025
     </footer>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get references to the carousel container and its child slides
+            const carouselSlidesContainer = document.getElementById('carousel-slides');
+            // Select only the direct div children of carouselSlidesContainer that are the actual content slides
+            const slides = Array.from(carouselSlidesContainer.querySelectorAll('.p-10'));
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+
+            // Get references to the navigation buttons
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            /**
+             * Updates the carousel's display to show the current slide using opacity for a fade effect.
+             * This function is responsible for:
+             * 1. Removing the 'slide-active' class from all slides.
+             * 2. Adding the 'slide-active' class to the `currentIndex` slide to make it visible.
+             * 3. Disabling/enabling the 'Previous' and 'Next' navigation buttons based on
+             * whether the current slide is the first or the last.
+             */
+            function updateCarousel() {
+                slides.forEach((slide) => {
+                    slide.classList.remove('slide-active');
+                    // Reset fade-in animations for elements within inactive slides
+                    slide.querySelectorAll('.animate-fade-in').forEach(el => {
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(10px)';
+                        el.style.animation = 'none'; // Temporarily disable animation
+                    });
+                });
+
+                const currentSlide = slides[currentIndex];
+                currentSlide.classList.add('slide-active');
+                
+                // Re-trigger fade-in animations for elements within the active slide
+                // Use a small timeout to allow the display/opacity change to register before restarting animation
+                setTimeout(() => {
+                    currentSlide.querySelectorAll('.animate-fade-in').forEach(el => {
+                        el.style.animation = ''; // Re-enable animation
+                        void el.offsetWidth; // Force reflow to restart animation
+                    });
+                }, 50); // Small delay to ensure animation restart
+
+                // Disable/enable navigation buttons
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalSlides - 1;
+            }
+
+            // Add event listener for the 'Next' button
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < totalSlides - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            // Add event listener for the 'Previous' button
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            // Initialize the carousel's state on page load
+            updateCarousel();
+        });
+    </script>
 </body>
 </html>
