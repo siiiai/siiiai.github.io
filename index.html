@@ -103,7 +103,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2.5rem 4rem 5rem 4rem; /* Adjusted padding-bottom to make space for bottom arrows */
+            /* Adjusted padding-left and padding-right to make content wider */
+            padding: 2.5rem 2rem 5rem 2rem; /* Reduced horizontal padding (from 4rem to 2rem) */
             box-sizing: border-box; /* Include padding in element's total width and height */
         }
 
@@ -111,6 +112,7 @@
         #carousel-slides > div.slide-active {
             opacity: 1; /* Make active slide visible */
             z-index: 1; /* Ensure active slide is on top */
+            animation: subtlePulseShadow 4s infinite ease-in-out; /* Apply new shadow effect */
         }
 
         /* Styles for the individual arrow buttons */
@@ -139,6 +141,13 @@
             opacity: 0.4; /* More transparent when disabled */
             cursor: not-allowed;
             background-color: transparent; /* Disabled button background also transparent */
+        }
+
+        /* New keyframe animation for subtle pulsating shadow on active slide */
+        @keyframes subtlePulseShadow {
+            0% { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+            50% { box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.2), 0 10px 15px -5px rgba(0, 0, 0, 0.08); }
+            100% { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
         }
     </style>
 </head>
@@ -180,7 +189,7 @@
                 <p class="mt-4 text-base md:text-lg text-gray-700 relative z-10 animate-fade-in animate-fade-in-2">
                     The Age of Superintelligence
                 </p>
-                <!-- Call-to-Action button with gradient and hover effects -->
+                <!-- Call-to-action button with gradient and hover effects -->
                 <a href="#" class="mt-8 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full
                                     shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out relative z-10
                                     animate-fade-in animate-fade-in-3">
@@ -198,7 +207,7 @@
                 <p class="mt-4 text-base md:text-lg text-gray-700 relative z-10 animate-fade-in animate-fade-in-2">
                     The Superintelligence Innovation Institute
                 </p>
-                <!-- Call-to-Action button with gradient and hover effects -->
+                <!-- Call-to-action button with gradient and hover effects -->
                 <a href="#" class="mt-8 inline-block px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-full
                                     shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition duration-300 ease-in-out relative z-10
                                     animate-fade-in animate-fade-in-3">
